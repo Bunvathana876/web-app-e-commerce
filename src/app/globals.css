@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Point of Sale (POS) Thermal Receipt Printing & Shift Reports */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-receipt,
+  #printable-receipt *,
+  #printable-shift-report,
+  #printable-shift-report * {
+    visibility: visible;
+  }
+  #printable-receipt,
+  #printable-shift-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+    padding: 8px;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .receipt-width-80mm {
+    width: 80mm !important;
+    max-width: 80mm !important;
+  }
+  .receipt-width-58mm {
+    width: 58mm !important;
+    max-width: 58mm !important;
+    font-size: 10px !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
